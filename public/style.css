@@ -113,6 +113,18 @@ input[type="file"] {
   background-color: #faa9b0; /* red */
 }
 
+.dtc-active {
+  background-color: #faa9b0; /* red */
+}
+
+.dtc-pending {
+  background-color: #fff0bd; /* yellow */
+}
+
+.dtc-stored {
+  background-color: #e0e0e0; /* gray */
+}
+
 .highlight-edited {
   border: 2px solid red !important;
   background-color: #fff5f5;
@@ -164,4 +176,27 @@ input[type="file"] {
   font-size: 16px;
   table-layout: auto;
   width: 100%;
+}
+
+.vsr-table ul {
+  margin: 0.5em 0;
+  padding-left: 1.2em;
+}
+.vsr-table li {
+  font-size: 12px;
+}
+
+.collapsible-section h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e9ecef;
+  padding: 0.5rem 1rem;
+  margin-top: 2rem;
+  border-radius: 4px;
+}
+
+.toggle-icon {
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
 }

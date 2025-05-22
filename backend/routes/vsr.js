@@ -14,10 +14,10 @@ const upload = multer();
 router.post('/upload-vsr', upload.single('vsrfile'), async (req, res) => {
   try {
     const html = req.file.buffer.toString('utf8');
-    const { ecuData, metadata } = parseVSR(html);
+    const { ecuData, metadata, dtcData } = parseVSR(html);
     const masterList = await getAllItems();
     const results = compareToMaster(ecuData, masterList);
-    res.json({ results, metadata });
+    res.json({ results, metadata, dtcData });
   } catch (err) {
     console.error('Upload Error:', err);
     res.status(500).json({ error: 'Failed to parse and compare VSR file.' });

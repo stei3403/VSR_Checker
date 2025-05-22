@@ -17,13 +17,21 @@ router.post('/update-master', async (req, res) => {
   console.log("🔧 Incoming updates:", updates);
   console.log(JSON.stringify(updates, null, 2));
 
-
   try {
     for (const item of updates) {
-      await updateItem(item);
+      const sanitizedItem = {
+        ECU: item.ECU,
+        PartNum: item.ExpectedPartNum ?? item.PartNum,
+        SWVersion: item.ExpectedSW ?? item.SWVersion,
+        Priority: item.Priority,
+        FIOwner: item.FIOwner,
+        SubsystemOwner: item.SubsystemOwner
+      };
+      await updateItem(sanitizedItem);
     }
     res.status(200).json({ success: true });
   } catch (err) {
+    console.error("Update error:", err);
     res.status(500).json({ error: "Update failed" });
   }
 });
